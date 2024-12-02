@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Content Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .summary {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Content Summarizer</h1>
+        <p>Enter the content you want to summarize:</p>
+        <textarea id="content" placeholder="Paste or write the content here..."></textarea>
+        <br><br>
+        <button onclick="summarizeContent()">Summarize</button>
+        
+        <div class="summary" id="summaryOutput" style="display:none;">
+            <h2>Summary:</h2>
+            <p id="summaryText"></p>
+        </div>
+    </div>
+
+    <script>
+        function summarizeContent() {
+            const content = document.getElementById('content').value;
+            
+            if (!content) {
+                alert("Please enter some content to summarize!");
+                return;
+            }
+            
+            // Simulate API call with a loading state
+            document.getElementById('summaryOutput').style.display = 'none';
+            document.getElementById('summaryText').innerHTML = 'Summarizing...';
+
+            // Here you would normally call the AI API. For now, we simulate a summary
+            setTimeout(function() {
+                // Replace this with actual API call and response parsing.
+                const summary = simulateSummarization(content);
+                
+                document.getElementById('summaryOutput').style.display = 'block';
+                document.getElementById('summaryText').innerHTML = summary;
+            }, 2000); // Simulate 2 seconds loading time
+        }
+
+        // A mock summarization function, replace this with actual API response
+        function simulateSummarization(content) {
+            // For demo purposes, just truncate content
+            return content.length > 100 ? content.substring(0, 100) + '...' : content;
+        }
+    </script>
+</body>
+</html>
